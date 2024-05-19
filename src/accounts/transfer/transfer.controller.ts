@@ -23,12 +23,12 @@ export class TransferController {
     return this.transferService.findOne(id);
   }
 
-  @Get('acc-origin:accountId')
+  @Get('acc-origin/:accountId')
   findByAccountOriginId(@Param('accountId') accountId: string) {
     return this.transferService.findByAccountOriginId(accountId);
   }
 
-  @Get('acc-destination:accountId')
+  @Get('acc-destination/:accountId')
   findByAccountDestinationId(@Param('accountId') accountId: string) {
     return this.transferService.findByAccountDestinationId(accountId);
   }

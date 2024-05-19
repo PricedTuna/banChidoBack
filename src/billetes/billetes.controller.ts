@@ -4,7 +4,7 @@ import { CreateBilleteDto } from './dto/create-billete.dto';
 import { UpdateBilleteDto } from './dto/update-billete.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('accounts')
+@ApiTags('billetes')
 @Controller('billetes')
 export class BilletesController {
   constructor(private readonly billetesService: BilletesService) {}
