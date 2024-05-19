@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { TransferService } from './transfer.service';
 import { CreateTransferDto } from './dto/create-transfer.dto';
-import { UpdateTransferDto } from './dto/update-transfer.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('transfer')
@@ -21,16 +20,16 @@ export class TransferController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.transferService.findOne(+id);
+    return this.transferService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTransferDto: UpdateTransferDto) {
-    return this.transferService.update(+id, updateTransferDto);
+  @Get('acc-origin:accountId')
+  findByAccountOriginId(@Param('accountId') accountId: string) {
+    return this.transferService.findByAccountOriginId(accountId);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.transferService.remove(+id);
+  @Get('acc-destination:accountId')
+  findByAccountDestinationId(@Param('accountId') accountId: string) {
+    return this.transferService.findByAccountDestinationId(accountId);
   }
 }

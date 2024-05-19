@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTransferDto } from './dto/create-transfer.dto';
-import { UpdateTransferDto } from './dto/update-transfer.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Transfer } from './schemes/transfer.scheme';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class TransferService {
+  constructor(@InjectModel(Transfer.name) private transferModel: Model<Transfer>){}
+
   create(createTransferDto: CreateTransferDto) {
-    return 'This action adds a new transfer';
+    const createdTransfer = new this.transferModel(createTransferDto);
+    return createdTransfer.save();
   }
 
   findAll() {
-    return `This action returns all transfer`;
+    return this.transferModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} transfer`;
+  findOne(id: string) {
+    return this.transferModel.findById(id).exec();
   }
 
-  update(id: number, updateTransferDto: UpdateTransferDto) {
-    return `This action updates a #${id} transfer`;
+  findByAccountOriginId(accountId: string){
+    return this.transferModel.find({AccountOrigenId: accountId}).exec()
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} transfer`;
+  findByAccountDestinationId(accountId: string){
+    return this.transferModel.find({AccountDestinoiId: accountId}).exec()
   }
+
+
 }

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { BilletesService } from './billetes.service';
 import { BilletesController } from './billetes.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Billetes, BilletesSchema } from './scheme/billetes.scheme';
+import { Billetes, BilletesSchema } from './scheme/Billetes.scheme';
 
 @Module({
   imports: [

@@ -1,9 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDecimal, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsDecimal, IsNotEmpty, IsOptional, IsString, Length } from "class-validator";
 
 export class CreateAccountDto {
   @IsString()
   @IsNotEmpty()
+  @Length(6)
   @ApiProperty()
   NumeroCuenta: string;
 
