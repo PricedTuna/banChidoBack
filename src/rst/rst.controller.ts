@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { RstService } from './rst.service';
 import { CreateRstDto } from './dto/create-rst.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('rst')
 @Controller('rst')
 export class RstController {
   constructor(private readonly rstService: RstService) {}

@@ -3,6 +3,7 @@ import { AccountsService } from './accounts.service';
 import { AccountsController } from './accounts.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Account, AccountSchema } from './schemes/Account.scheme';
+import { TransferModule } from './transfer/transfer.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { Account, AccountSchema } from './schemes/Account.scheme';
         schema: AccountSchema,
       },
     ]),
+    TransferModule,
   ],
   controllers: [AccountsController],
   providers: [AccountsService],
