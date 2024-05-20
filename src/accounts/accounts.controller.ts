@@ -23,8 +23,13 @@ export class AccountsController {
     return this.accountsService.findOne(id);
   }
   
-  @Get('acountbynum:accountNum')
+  @Get('account-by-num/:accountNum')
   async findByAccountNumber(@Param('accountNum') accountNum: string) {
     return this.accountsService.findByNumber(accountNum);
+  }
+
+  @Get('account-by-user/:userId')
+  async findByUserId(@Param('userId') userId: string) {
+    return this.accountsService.findByUserId(userId);
   }
 }

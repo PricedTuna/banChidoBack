@@ -8,9 +8,9 @@ export class CreateAccountDto {
   @ApiProperty()
   NumeroCuenta: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @ApiProperty()
+  @IsOptional()
+  @ApiProperty({required: false})
   RFID?: string;
   
   @IsDecimal()

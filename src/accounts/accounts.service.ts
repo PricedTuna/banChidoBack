@@ -24,4 +24,8 @@ export class AccountsService {
   findByNumber(accountNum: string){
     return this.accountModel.findOne({NumeroCuenta: accountNum}).exec()
   }
+
+  findByUserId(userId: string){
+    return this.accountModel.findOne({UserId: userId}).exec()
+  }
 }
