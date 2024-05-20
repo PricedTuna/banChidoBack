@@ -4,6 +4,7 @@ import { AccountsController } from './accounts.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Account, AccountSchema } from './schemes/Account.scheme';
 import { TransferModule } from './transfer/transfer.module';
+import { RetiroModule } from './retiro/retiro.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { TransferModule } from './transfer/transfer.module';
       },
     ]),
     TransferModule,
+    RetiroModule,
   ],
   controllers: [AccountsController],
   providers: [AccountsService],

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTransferDto } from './dto/create-transfer.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Transfer } from './schemes/transfer.scheme';
+import { Transfer } from './schemes/Transfer.scheme'; 
 import { Model } from 'mongoose';
 
 @Injectable()

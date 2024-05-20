@@ -12,20 +12,14 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     const createdUser = new this.userModel(createUserDto);
     return createdUser.save();
-
-    return 'This action adds a new user';
   }
 
   findAll() {
     return this.userModel.find().exec();
-
-    return `This action returns all users`;
   }
 
   findOne(id: string) {
     return this.userModel.findById(id).exec();
-
-    return `This action returns a #${id} user`;
   }
 
   update(id: string, updateUserDto: UpdateUserDto) {
@@ -34,13 +28,9 @@ export class UsersService {
         new: true,
       })
       .exec();
-
-    return `This action updates a #${id} user`;
   }
 
   remove(id: string) {
     return this.userModel.findByIdAndDelete(id).exec();
-
-    return `This action removes a #${id} user`;
   }
 }

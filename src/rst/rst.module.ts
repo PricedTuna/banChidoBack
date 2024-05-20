@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { RstService } from './rst.service';
 import { RstController } from './rst.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { RstSchema, Rst } from './schemes/rst.scheme';
+import { Rst } from './entities/rst.entity';
+import { RstSchema } from './schemes/Rst.scheme';
 
 @Module({
   imports: [
