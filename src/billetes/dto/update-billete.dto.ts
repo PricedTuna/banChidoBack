@@ -8,11 +8,11 @@ export class UpdateBilleteDto extends PartialType(CreateBilleteDto) {
   @IsNotEmpty()
   @IsOptional()
   @ApiProperty()
-  ValorBillete: number;
+  valorBillete: number;
 
   @IsNumber()
   @IsNotEmpty()
   @IsOptional()
   @ApiProperty()
-  Cantidad: number;
+  cantidad: number;
 }

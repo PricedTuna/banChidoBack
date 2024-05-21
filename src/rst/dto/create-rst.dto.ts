@@ -6,15 +6,15 @@ export class CreateRstDto {
   @IsNotEmpty()
   @Length(8)
   @ApiProperty()
-  Token: string;
+  token: string;
   
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  Cantidad: number;
+  cantidad: number;
   
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  AccountId: string;
+  accountId: string;
 }

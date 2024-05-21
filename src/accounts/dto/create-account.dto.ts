@@ -6,7 +6,7 @@ export class CreateAccountDto {
   @IsNotEmpty()
   @Length(6)
   @ApiProperty()
-  NumeroCuenta: string;
+  numeroCuenta: string;
 
   @IsNotEmpty()
   @IsOptional()
@@ -16,10 +16,10 @@ export class CreateAccountDto {
   @IsDecimal()
   @IsNotEmpty()
   @ApiProperty()
-  Saldo: number;
+  saldo: number;
   
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  UserId: string;
+  userId: string;
 }

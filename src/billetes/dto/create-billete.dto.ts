@@ -5,10 +5,10 @@ export class CreateBilleteDto {
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  ValorBillete: number;
+  valorBillete: number;
 
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  Cantidad: number;
+  cantidad: number;
 }
