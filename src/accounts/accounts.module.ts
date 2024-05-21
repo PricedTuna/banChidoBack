@@ -19,5 +19,6 @@ import { RetiroModule } from './retiro/retiro.module';
   ],
   controllers: [AccountsController],
   providers: [AccountsService],
+  exports: [AccountsService],
 })
 export class AccountsModule {}

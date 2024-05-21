@@ -7,6 +7,7 @@ import { AccountsModule } from './accounts/accounts.module';
 import { RstModule } from './rst/rst.module';
 import { BilletesModule } from './billetes/billetes.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ConfigModule } from '@nestjs/config';
     AccountsModule,
     RstModule,
     BilletesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
