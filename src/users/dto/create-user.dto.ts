@@ -5,33 +5,33 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  nombres: string;
+  Nombres: string;
   
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  apellido1: string;
+  Apellido1: string;
   
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  apellido2: string;
+  Apellido2: string;
   
   @IsNotEmpty()
   @IsString()
   @IsEmail()
   @ApiProperty()
-  correo: string;
+  Correo: string;
   
   @IsNumberString()
   @IsNotEmpty()
   @IsString()
   @Length(4)
   @ApiProperty()
-  password: string;
+  Password: string;
 
   @IsNotEmpty()
   @IsDateString({}, { message: 'La fecha debe estar en formato YYYY-MM-DD' })
   @ApiProperty()
-  fechaNacimiento: Date
+  FechaNacimiento: Date
 }

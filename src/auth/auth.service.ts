@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { AccountsService } from 'src/accounts/accounts.service';
 import { UsersService } from 'src/users/users.service';
 import { SignInDto } from './dto/sign-in.dto';
@@ -21,7 +21,7 @@ export class AuthService {
     }
 
     const account = await this.accountsService.findByUserId(user.id);
-
+    
     const { Password, ...userInfo } = user.toObject();
     const { UserId, ...accountInfo } = account.toObject();
 
@@ -32,16 +32,21 @@ export class AuthService {
     };
   }
 
-  async signUp(signUpDto: SignUpDto) {
-    const createdUser = await this.usersService.create(signUpDto.user);
+  async signUp({account: accountDto, user: userDto}: SignUpDto) {
 
-    const createdAccount = await this.accountsService.create(signUpDto.account);
+    // verify if Correo has an user already
+    if (this.verifyCorreoHasUser(userDto.Correo))
+      throw new BadRequestException('mail has already an user')
+
+    const createdUser = await this.usersService.create(userDto);
+
+    const createdAccount = await this.accountsService.create({...accountDto, UserId: createdUser.id});
 
     const { Password, ...userInfo } = createdUser.toObject();
     const { UserId, ...accountInfo } = createdAccount.toObject();
 
     const payload = {
-      sub: createdUser.id,
+      sub: userInfo._id,
       user: userInfo,
       account: accountInfo,
     };
@@ -49,5 +54,13 @@ export class AuthService {
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
+  }
+
+
+  verifyCorreoHasUser(Correo: string) {
+    const findedUser = this.usersService.findByMail(Correo);
+
+    // return true si tiene usuario
+    return findedUser !== null;
   }
 }

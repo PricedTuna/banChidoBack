@@ -8,5 +8,5 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsString()
   @IsEmail()
   @ApiProperty()
-  correo: string;
+  Correo: string;
 }
