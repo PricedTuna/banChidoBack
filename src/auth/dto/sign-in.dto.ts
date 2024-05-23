@@ -8,7 +8,6 @@ export class SignInDto {
   @ApiProperty()
   correo: string;
 
-  @IsNumberString()
   @IsNotEmpty()
   @IsString()
   @Length(4)

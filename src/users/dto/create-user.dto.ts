@@ -24,7 +24,6 @@ export class CreateUserDto {
   @ApiProperty()
   Correo: string;
   
-  @IsNumberString()
   @IsNotEmpty()
   @IsString()
   @Length(userConstants.PasswordLength)

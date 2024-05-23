@@ -8,7 +8,6 @@ export class LoginUserDto {
   @ApiProperty()
   correo: string;
 
-  @IsNumberString()
   @IsNotEmpty()
   @IsString()
   @Length(4)

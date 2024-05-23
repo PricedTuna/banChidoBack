@@ -45,9 +45,6 @@ export class AuthService {
     if (await this.verifyCorreoHasUser(userDto.Correo))
       throw new BadRequestException('mail has already an user');
 
-    if (await this.verifyPasswordHasAccount(userDto.Password))
-      throw new BadRequestException('password has already an user');
-
     const createdUser = await this.usersService.create(userDto);
 
     const newAccountData = await this.accountsService.generateNewAccountValues(
@@ -72,13 +69,6 @@ export class AuthService {
   // ~~~ Verify Functions
   async verifyCorreoHasUser(Correo: string) {
     const findedUser = await this.usersService.findByMail(Correo);
-
-    // return true si tiene usuario
-    return findedUser !== null;
-  }
-
-  async verifyPasswordHasAccount(Password: string) {
-    const findedUser = await this.usersService.findByPassword(Password);
 
     // return true si tiene usuario
     return findedUser !== null;
