@@ -1,10 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDecimal, IsNotEmpty, IsOptional, IsString, Length } from "class-validator";
+import { accountConstants } from "src/constants/constants";
 
 export class CreateAccountDto {
   @IsString()
   @IsNotEmpty()
-  @Length(6)
+  @Length(accountConstants.NumeroCuentaLength)
   @ApiProperty()
   NumeroCuenta: string;
 
@@ -21,6 +22,6 @@ export class CreateAccountDto {
   @IsString()
   @IsNotEmpty()
   @IsOptional()
-  @ApiProperty({required: false})
-  UserId?: string;
+  @ApiProperty()
+  UserId: string;
 }

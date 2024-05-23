@@ -29,27 +29,31 @@ export class AuthService {
     const { Password, ...userInfo } = user.toObject();
     const { UserId, ...accountInfo } = account.toObject();
 
-    const payload = { sub: user.id, user: userInfo, account: accountInfo };
+    const payload = {
+      sub: userInfo._id,
+      user: userInfo,
+      account: accountInfo,
+    };
 
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
   }
 
-  async signUp({ account: accountDto, user: userDto }: SignUpDto) {
+  async signUp(userDto: SignUpDto) {
     // verify if Correo has an user already
     if (await this.verifyCorreoHasUser(userDto.Correo))
       throw new BadRequestException('mail has already an user');
 
-    if(await this.verifyPasswordHasAccount(userDto.Password))
+    if (await this.verifyPasswordHasAccount(userDto.Password))
       throw new BadRequestException('password has already an user');
 
     const createdUser = await this.usersService.create(userDto);
 
-    const createdAccount = await this.accountsService.create({
-      ...accountDto,
-      UserId: createdUser.id,
-    });
+    const newAccountData = await this.accountsService.generateNewAccountValues(
+      createdUser.id,
+    );
+    const createdAccount = await this.accountsService.create(newAccountData);
 
     const { Password, ...userInfo } = createdUser.toObject();
     const { UserId, ...accountInfo } = createdAccount.toObject();
@@ -65,6 +69,7 @@ export class AuthService {
     };
   }
 
+  // ~~~ Verify Functions
   async verifyCorreoHasUser(Correo: string) {
     const findedUser = await this.usersService.findByMail(Correo);
 
