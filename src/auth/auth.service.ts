@@ -38,8 +38,11 @@ export class AuthService {
 
   async signUp({ account: accountDto, user: userDto }: SignUpDto) {
     // verify if Correo has an user already
-    if (this.verifyCorreoHasUser(userDto.Correo))
+    if (await this.verifyCorreoHasUser(userDto.Correo))
       throw new BadRequestException('mail has already an user');
+
+    if(await this.verifyPasswordHasAccount(userDto.Password))
+      throw new BadRequestException('password has already an user');
 
     const createdUser = await this.usersService.create(userDto);
 
@@ -62,8 +65,15 @@ export class AuthService {
     };
   }
 
-  verifyCorreoHasUser(Correo: string) {
-    const findedUser = this.usersService.findByMail(Correo);
+  async verifyCorreoHasUser(Correo: string) {
+    const findedUser = await this.usersService.findByMail(Correo);
+
+    // return true si tiene usuario
+    return findedUser !== null;
+  }
+
+  async verifyPasswordHasAccount(Password: string) {
+    const findedUser = await this.usersService.findByPassword(Password);
 
     // return true si tiene usuario
     return findedUser !== null;

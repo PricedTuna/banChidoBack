@@ -28,6 +28,10 @@ export class UsersService {
     return this.userModel.findOne({ Correo: correo }).exec();
   }
 
+  findByPassword(password: string) {
+    return this.userModel.findOne({ Password: password }).exec();
+  }
+
   login({ correo: Correo, password: Password }: LoginUserDto) {
     return this.userModel.findOne({ Correo: Correo, Password: Password });
   }
