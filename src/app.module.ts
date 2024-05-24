@@ -9,6 +9,7 @@ import { BilletesModule } from './billetes/billetes.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { TransferModule } from './accounts/transfer/transfer.module';
+import { RetiroModule } from './accounts/retiro/retiro.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TransferModule } from './accounts/transfer/transfer.module';
     ),
     AuthModule,
     TransferModule,
+    RetiroModule,
     UsersModule,
     AccountsModule,
     RstModule,

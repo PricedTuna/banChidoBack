@@ -1,15 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, ValidationPipe } from '@nestjs/common';
 import { RetiroService } from './retiro.service';
 import { CreateRetiroDto } from './dto/create-retiro.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @ApiTags('retiro')
+@UseGuards(AuthGuard)
 @Controller('retiro')
 export class RetiroController {
   constructor(private readonly retiroService: RetiroService) {}
 
   @Post()
-  create(@Body() createRetiroDto: CreateRetiroDto) {
+  create(@Body(new ValidationPipe()) createRetiroDto: CreateRetiroDto) {
     return this.retiroService.create(createRetiroDto);
   }
 

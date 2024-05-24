@@ -5,10 +5,10 @@ export class CreateRetiroDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  accountId: string;
+  AccountId: string;
 
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  cantidad: number;
+  Cantidad: number;
 }

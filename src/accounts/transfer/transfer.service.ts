@@ -18,8 +18,8 @@ export class TransferService {
     if(!accFrom || !accTo)
       throw new UnauthorizedException();
 
-    accFrom.Saldo -= Cantidad;
-    accTo.Saldo += Cantidad;
+    accFrom.Saldo -= parseInt(Cantidad.toString());
+    accTo.Saldo += parseInt(Cantidad.toString());
 
     // Guardar las cuentas actualizadas en la base de datos
     await accFrom.save();
