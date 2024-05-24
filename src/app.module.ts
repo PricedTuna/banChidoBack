@@ -8,6 +8,7 @@ import { RstModule } from './rst/rst.module';
 import { BilletesModule } from './billetes/billetes.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { TransferModule } from './accounts/transfer/transfer.module';
 
 @Module({
   imports: [
@@ -15,11 +16,12 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRoot(
       process.env.MONGO_CONNECTION_STRING
     ),
+    AuthModule,
+    TransferModule,
     UsersModule,
     AccountsModule,
     RstModule,
     BilletesModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

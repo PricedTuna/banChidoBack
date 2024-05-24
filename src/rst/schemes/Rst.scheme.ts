@@ -7,7 +7,7 @@ export class Rst {
   @Prop({required: true})
   Cantidad: number;
   @Prop({required: true})
-  CuentaId: string;
+  AccountId: string;
 }
 
 export const RstSchema = SchemaFactory.createForClass(Rst);

@@ -6,3 +6,7 @@ export const accountConstants = {
 export const userConstants = {
   PasswordLength: 4,
 };
+
+export const rstConstants = {
+  tokenLength: 8
+}

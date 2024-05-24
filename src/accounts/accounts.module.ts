@@ -16,7 +16,6 @@ import { UsersModule } from 'src/users/users.module';
         schema: AccountSchema,
       },
     ]),
-    TransferModule,
     RetiroModule,
   ],
   controllers: [AccountsController],

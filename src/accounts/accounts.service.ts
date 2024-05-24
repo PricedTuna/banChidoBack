@@ -40,9 +40,21 @@ export class AccountsService {
     if(!account)
       throw new BadRequestException();
 
-    const user = await this.usersService.findOne(account.id);
-    
-    // todo hacer que devuelva la info que debe devolver (basate en la interface que recibe desde el front)
+    console.log(account);
+    const user = (await this.usersService.findOne(account.UserId)).toObject();
+
+    return {
+      user: {
+        _id:        user._id,
+        Nombres:    user.Nombres,
+        Apellido1:  user.Apellido1,
+        Apellido2:  user.Apellido2,
+      },
+      account: {
+        _id:          account.id,
+        numeroCuenta: account.NumeroCuenta
+      }
+    }
 
   }
 
