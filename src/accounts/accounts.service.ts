@@ -1,14 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAccountDto } from './dto/create-account.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Account } from './schemes/Account.scheme';
 import { Model } from 'mongoose';
 import { accountConstants } from 'src/constants/constants';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AccountsService {
   constructor(
     @InjectModel(Account.name) private accountModel: Model<Account>,
+    private usersService: UsersService,
   ) {}
 
   create(createAccountDto: CreateAccountDto) {
@@ -30,6 +32,18 @@ export class AccountsService {
 
   findByUserId(userId: string) {
     return this.accountModel.findOne({ UserId: userId }).exec();
+  }
+
+  async findUserByNumAcc(accountNum: string){
+    const account = await this.findByNumber(accountNum);
+    
+    if(!account)
+      throw new BadRequestException();
+
+    const user = await this.usersService.findOne(account.id);
+    
+    // todo hacer que devuelva la info que debe devolver (basate en la interface que recibe desde el front)
+
   }
 
   // ~~ Generator Functions

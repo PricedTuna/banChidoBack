@@ -5,15 +5,15 @@ export class CreateTransferDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  accountOrigenId: string;
+  AccountOrigenId: string;
 
   @IsNotEmpty()
   @IsString()
   @ApiProperty()
-  accountDestinoiId: string;
+  AccountDestinoiId: string;
 
   @IsNotEmpty()
   @IsNumber()
   @ApiProperty()
-  cantidad: number;
+  Cantidad: number;
 }

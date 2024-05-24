@@ -28,6 +28,11 @@ export class AccountsController {
     return this.accountsService.findByNumber(accountNum);
   }
 
+  @Get('account-user/:accountNum')
+  async findUserByNumAcc(@Param('accountNum') accountNum: string) {
+    return this.accountsService.findUserByNumAcc(accountNum);
+  }
+
   @Get('account-by-user/:userId')
   async findByUserId(@Param('userId') userId: string) {
     return this.accountsService.findByUserId(userId);
