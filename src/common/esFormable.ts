@@ -7,7 +7,7 @@ type Resultado = {
   } | null;
 };
 
-function esFormable(cantidad: number): Resultado {
+export function esFormable(cantidad: number): Resultado {
   // Comenzamos desde la cantidad máxima posible de billetes de 500 hacia abajo
   for (let b500 = Math.floor(cantidad / 500); b500 >= 0; b500--) {
       let restante500 = cantidad - (b500 * 500);

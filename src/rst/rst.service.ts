@@ -6,6 +6,7 @@ import { Model } from 'mongoose';
 import { rstConstants } from 'src/constants/constants';
 import { AccountsService } from 'src/accounts/accounts.service';
 import { ConsumeTokenDto } from './dto/consume-token-dto';
+import { esFormable } from 'src/common/esFormable';
 
 @Injectable()
 export class RstService {
