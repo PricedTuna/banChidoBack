@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, ValidationPipe } from '@nestjs/common';
 import { RstService } from './rst.service';
 import { CreateRstDto } from './dto/create-rst.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { ConsumeTokenDto } from './dto/consume-token-dto';
 
 @ApiTags('rst')
 @UseGuards(AuthGuard)
@@ -11,7 +12,7 @@ export class RstController {
   constructor(private readonly rstService: RstService) {}
 
   @Post()
-  create(@Body() createRstDto: CreateRstDto) {
+  create(@Body(new ValidationPipe()) createRstDto: CreateRstDto) {
     return this.rstService.create(createRstDto);
   }
 
@@ -28,5 +29,10 @@ export class RstController {
   @Get(':token')
   findByToken(@Param('token') token: string) {
     return this.rstService.findByToken(token);
+  }
+
+  @Post('consume-token')
+  consumeToken(@Body(new ValidationPipe()) consumeTokenDto: ConsumeTokenDto) {
+    return this.rstService.consumeToken(consumeTokenDto);
   }
 }

@@ -8,6 +8,8 @@ export class Rst {
   Cantidad: number;
   @Prop({required: true})
   AccountId: string;
+  @Prop({required: false})
+  IsUsed: boolean;
 }
 
 export const RstSchema = SchemaFactory.createForClass(Rst);

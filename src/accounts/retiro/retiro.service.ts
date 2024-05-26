@@ -20,13 +20,21 @@ export class RetiroService {
     if(account.Saldo < createRetiroDto.Cantidad)
       throw new NotFoundException('Mount exceds total')
 
+    const formable = esFormable(createRetiroDto.Cantidad);
+
+    if(!formable.esFormable)  
+      throw new BadRequestException("Non formable cuantity")
 
     // Guardar en db
     account.Saldo -= createRetiroDto.Cantidad;
     account.save()
 
     const createdRetiro = new this.retiroModel(createRetiroDto);
-    return createdRetiro.save();
+
+    if(!createdRetiro)
+      throw new BadRequestException()
+
+    return formable.billetes;
   }
 
   findAll() {
