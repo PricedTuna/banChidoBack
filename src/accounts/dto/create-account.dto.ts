@@ -9,6 +9,7 @@ export class CreateAccountDto {
   @ApiProperty()
   NumeroCuenta: string;
 
+  @IsString()
   @IsNotEmpty()
   @IsOptional()
   @ApiProperty({required: false})

@@ -1,10 +1,11 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAccountDto } from './dto/create-account.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Account } from './schemes/Account.scheme';
 import { Model } from 'mongoose';
 import { accountConstants } from 'src/constants/constants';
 import { UsersService } from 'src/users/users.service';
+import { AddRFIDDto } from './dto/add-rfid-dto';
 
 @Injectable()
 export class AccountsService {
@@ -16,6 +17,16 @@ export class AccountsService {
   create(createAccountDto: CreateAccountDto) {
     const createdAccount = new this.accountModel(createAccountDto);
     return createdAccount.save();
+  }
+
+  async addRFID(addRFIDDto: AddRFIDDto){
+    const account = await this.findOne(addRFIDDto.AccountId);
+    
+    if(!account)
+      throw new NotFoundException()
+
+    account.RFID = addRFIDDto.RFID;
+    return account.save();
   }
 
   findAll() {

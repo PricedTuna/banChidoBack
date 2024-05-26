@@ -10,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { TransferModule } from './accounts/transfer/transfer.module';
 import { RetiroModule } from './accounts/retiro/retiro.module';
+import { RfidtokenModule } from './rfidtoken/rfidtoken.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { RetiroModule } from './accounts/retiro/retiro.module';
     AccountsModule,
     RstModule,
     BilletesModule,
+    RfidtokenModule,
   ],
   controllers: [AppController],
   providers: [AppService],

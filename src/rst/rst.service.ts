@@ -10,7 +10,7 @@ import { esFormable } from 'src/common/esFormable';
 
 @Injectable()
 export class RstService {
-  constructor(@InjectModel(Rst.name) private rstModel: Model<Rst>, private accountsService: AccountsService,){}
+  constructor(@InjectModel(Rst.name) private rstModel: Model<Rst>, private accountsService: AccountsService){}
 
   async create(createRstDto: CreateRstDto) {
     const newToken = await this.generateRandomString(rstConstants.tokenLength)

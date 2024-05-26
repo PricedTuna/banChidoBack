@@ -10,3 +10,7 @@ export const userConstants = {
 export const rstConstants = {
   tokenLength: 8
 }
+
+export const rfidTokenConstants = {
+  tokenLength: 8
+}
