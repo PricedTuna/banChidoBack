@@ -1,6 +1,6 @@
 export const accountConstants = {
   NumeroCuentaLength: 6,
-  SaldoInicial: 100,
+  SaldoInicial: 800,
 };
 
 export const userConstants = {
