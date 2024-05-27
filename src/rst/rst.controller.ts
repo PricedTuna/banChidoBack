@@ -26,7 +26,7 @@ export class RstController {
     return this.rstService.findOne(id);
   }
 
-  @Get(':token')
+  @Get('by-token/:token')
   findByToken(@Param('token') token: string) {
     return this.rstService.findByToken(token);
   }
