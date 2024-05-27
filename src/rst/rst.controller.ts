@@ -31,6 +31,11 @@ export class RstController {
     return this.rstService.findByToken(token);
   }
 
+  @Get('account:id')
+  findByAccount(@Param('id') id: string) {
+    return this.rstService.findByAccount(id);
+  }
+
   @Post('consume-token')
   consumeToken(@Body(new ValidationPipe()) consumeTokenDto: ConsumeTokenDto) {
     return this.rstService.consumeToken(consumeTokenDto);

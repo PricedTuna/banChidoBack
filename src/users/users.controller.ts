@@ -42,12 +42,9 @@ export class UsersController {
     return this.usersService.login(loginUserDto);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body(new ValidationPipe()) updateUserDto: UpdateUserDto,
-  ) {
-    return this.usersService.update(id, updateUserDto);
+  @Patch()
+  update(@Body(new ValidationPipe()) updateUserDto: UpdateUserDto) {
+    return this.usersService.update(updateUserDto);
   }
 
   @Delete(':id')

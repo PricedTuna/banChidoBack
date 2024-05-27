@@ -51,7 +51,6 @@ export class AccountsService {
     if(!account)
       throw new BadRequestException();
 
-    console.log(account);
     const user = (await this.usersService.findOne(account.UserId)).toObject();
 
     return {

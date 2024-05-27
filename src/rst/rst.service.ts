@@ -59,6 +59,10 @@ export class RstService {
 
   }
 
+  findByAccount(id: string) {
+    return this.rstModel.find({AccountId: id, IsUsed: true}).exec()
+  }
+
 
 
 

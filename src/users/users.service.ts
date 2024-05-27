@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -36,12 +36,15 @@ export class UsersService {
     return this.userModel.findOne({ Correo: Correo, Password: Password });
   }
 
-  update(id: string, updateUserDto: UpdateUserDto) {
-    return this.userModel
-      .findByIdAndUpdate(id, updateUserDto, {
-        new: true,
-      })
-      .exec();
+  async update(updateUserDto: UpdateUserDto) {
+    const user = await this.findOne(updateUserDto.UserId);
+
+    if(!user)
+      throw new NotFoundException()
+
+    user.Correo = updateUserDto.Correo;
+
+    return user.save();
   }
 
   remove(id: string) {

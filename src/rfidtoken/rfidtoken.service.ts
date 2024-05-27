@@ -26,9 +26,10 @@ export class RfidtokenService {
       Token: newToken,
       IsUsed: false,
     });
+    
+    createdRFIDToken.save();
 
-
-    return createdRFIDToken.save();
+    return {Token: createdRFIDToken.Token}
   }
 
   findAll() {

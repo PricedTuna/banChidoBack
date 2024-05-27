@@ -25,7 +25,7 @@ export class RetiroController {
     return this.retiroService.findOne(id);
   }
 
-  @Get(':id')
+  @Get('account/:id')
   findByAccount(@Param('id') id: string) {
     return this.retiroService.findByAccount(id);
   }
