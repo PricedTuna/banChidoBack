@@ -6,7 +6,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RFIDToken, RFIDTokenSchema } from './scheme/RFIDToken.scheme';
 
 @Module({
-  imports: [AccountsModule, 
+  imports: [
+    AccountsModule,
     MongooseModule.forFeature([
       {
         name: RFIDToken.name,

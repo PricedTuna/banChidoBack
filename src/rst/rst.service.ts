@@ -36,9 +36,9 @@ export class RstService {
     if(!token)
       throw new NotFoundException()
 
-    const userFromToken = await this.accountsService.findOne(token.AccountId);
+    const accFromToken = await this.accountsService.findOne(token.AccountId);
 
-    if(!token)
+    if(!accFromToken)
       throw new NotFoundException()
 
     const formable = esFormable(token.Cantidad);
@@ -48,10 +48,10 @@ export class RstService {
 
 
 
-    userFromToken.Saldo -= token.Cantidad;
+    accFromToken.Saldo -= token.Cantidad;
     token.IsUsed = true;
 
-    userFromToken.save()
+    accFromToken.save()
     token.save()
 
 

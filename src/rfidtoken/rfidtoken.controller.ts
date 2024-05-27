@@ -1,7 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe } from '@nestjs/common';
 import { RfidtokenService } from './rfidtoken.service';
 import { CreateRfidtokenDto } from './dto/create-rfidtoken.dto';
+import { ApiTags } from '@nestjs/swagger';
+import { ConsumeTokenDto } from './dto/consume-token.dto';
+import { ValidateTokenDto } from './dto/validate-token';
 
+@ApiTags('rfidtoken')
+// @UseGuards(AuthGuard)
 @Controller('rfidtoken')
 export class RfidtokenController {
   constructor(private readonly rfidtokenService: RfidtokenService) {}
@@ -19,5 +24,15 @@ export class RfidtokenController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.rfidtokenService.findOne(id);
+  }
+
+  @Post('consume-token')
+  consumeToken(@Body(new ValidationPipe()) consumeTokenDto: ConsumeTokenDto) {
+    return this.rfidtokenService.consumeToken(consumeTokenDto);
+  }
+
+  @Post('validate-token')
+  validateToken(@Body(new ValidationPipe()) validateTokenDto: ValidateTokenDto) {
+    return this.rfidtokenService.validateToken(validateTokenDto);
   }
 }

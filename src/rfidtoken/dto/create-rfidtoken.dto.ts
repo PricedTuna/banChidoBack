@@ -7,10 +7,4 @@ export class CreateRfidtokenDto {
   @IsOptional()
   @ApiProperty()
   AccountId: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @IsOptional()
-  @ApiProperty({required: true})
-  RFID: string;
 }

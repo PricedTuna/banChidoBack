@@ -6,7 +6,7 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { ConsumeTokenDto } from './dto/consume-token-dto';
 
 @ApiTags('rst')
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('rst')
 export class RstController {
   constructor(private readonly rstService: RstService) {}

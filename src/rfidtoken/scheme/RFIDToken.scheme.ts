@@ -1,14 +1,15 @@
-import { Prop, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
+@Schema()
 export class RFIDToken {
   @Prop({required: true})
   AccountId: string;
 
   @Prop({required: true})
-  RFID: string;
+  Token: string;
 
   @Prop({required: true})
-  Token: string;
+  IsUsed: boolean;
 }
 
 export const RFIDTokenSchema = SchemaFactory.createForClass(RFIDToken);
