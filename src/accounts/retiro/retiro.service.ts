@@ -31,7 +31,7 @@ export class RetiroService {
     account.save()
 
     const createdRetiro = new this.retiroModel(createRetiroDto);
-
+    createdRetiro.save()
     if(!createdRetiro)
       throw new BadRequestException()
 
