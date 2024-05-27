@@ -74,7 +74,7 @@ export class AccountsService {
     if(!account)
       throw new NotFoundException("Account not found")
 
-    return {AccountId: account.id}
+    return account;
   }
 
   // ~~ Generator Functions

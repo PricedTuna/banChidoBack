@@ -13,13 +13,13 @@ export class RetiroService {
 
   async create(createRetiroDto: CreateRetiroDto) {
 
-    const account = await this.accountsService.findOne(createRetiroDto.AccountId);
+    const account = await this.accountsService.findByRFID(createRetiroDto.RFID);
 
     if(!account)
       throw new NotFoundException('Account not found')
 
     if(account.Saldo < createRetiroDto.Cantidad)
-      throw new NotFoundException('Mount exceds total')
+      throw new BadRequestException('Mount exceds total')
 
     const formable = esFormable(createRetiroDto.Cantidad);
 

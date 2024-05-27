@@ -5,7 +5,7 @@ export class CreateRetiroDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  AccountId: string;
+  RFID: string;
 
   @IsNumber()
   @IsNotEmpty()
