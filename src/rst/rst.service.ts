@@ -27,7 +27,7 @@ export class RstService {
   }
 
   findByToken(token: string) {
-    return this.rstModel.findOne({Token: token}).exec()
+    return this.rstModel.findOne({Token: token, IsUsed: false}).exec()
   }
 
   async consumeToken(consumeTokenDto: ConsumeTokenDto){
