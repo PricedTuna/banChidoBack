@@ -5,7 +5,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/auth/auth.guard';
 
 @ApiTags('retiro')
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('retiro')
 export class RetiroController {
   constructor(private readonly retiroService: RetiroService) {}
