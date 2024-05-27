@@ -30,7 +30,7 @@ export class RstController {
     return this.rstService.findByToken(token);
   }
 
-  @Get('account:id')
+  @Get('account/:id')
   findByAccount(@Param('id') id: string) {
     return this.rstService.findByAccount(id);
   }
