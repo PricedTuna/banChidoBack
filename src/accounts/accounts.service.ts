@@ -68,6 +68,10 @@ export class AccountsService {
 
   }
 
+  findByRFID(rfid: string){
+    return this.accountModel.find({RFID: rfid})
+  }
+
   // ~~ Generator Functions
   async generateNewAccountValues(UserId: string): Promise<CreateAccountDto> {
     const newAccNumber = await this.generateRandomString(

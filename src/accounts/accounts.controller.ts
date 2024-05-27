@@ -45,4 +45,9 @@ export class AccountsController {
   async findByUserId(@Param('userId') userId: string) {
     return this.accountsService.findByUserId(userId);
   }
+  
+  @Get('account-by-rfid/:rdif')
+  async findByRFID(@Param('rdif') rdif: string) {
+    return this.accountsService.findByRFID(rdif);
+  }
 }
