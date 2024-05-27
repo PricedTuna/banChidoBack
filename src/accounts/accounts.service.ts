@@ -68,8 +68,13 @@ export class AccountsService {
 
   }
 
-  findByRFID(rfid: string){
-    return this.accountModel.find({RFID: rfid})
+  async findByRFID(rfid: string){
+    const account = await this.accountModel.findOne({RFID: rfid}).exec()
+
+    if(!account)
+      throw new NotFoundException("Account not found")
+
+    return {AccountId: account.id}
   }
 
   // ~~ Generator Functions
