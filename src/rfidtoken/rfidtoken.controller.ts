@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe } fro
 import { RfidtokenService } from './rfidtoken.service';
 import { CreateRfidtokenDto } from './dto/create-rfidtoken.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { ConsumeTokenDto } from './dto/consume-token.dto';
+import { ConsumeTokenRfidDto } from './dto/consume-token.dto';
 import { ValidateTokenDto } from './dto/validate-token';
 
 @ApiTags('rfidtoken')
@@ -27,7 +27,7 @@ export class RfidtokenController {
   }
 
   @Post('consume-token')
-  consumeToken(@Body(new ValidationPipe()) consumeTokenDto: ConsumeTokenDto) {
+  consumeToken(@Body(new ValidationPipe()) consumeTokenDto: ConsumeTokenRfidDto) {
     return this.rfidtokenService.consumeToken(consumeTokenDto);
   }
 

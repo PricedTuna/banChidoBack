@@ -2,7 +2,6 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Validatio
 import { RstService } from './rst.service';
 import { CreateRstDto } from './dto/create-rst.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from 'src/auth/auth.guard';
 import { ConsumeTokenDto } from './dto/consume-token-dto';
 
 @ApiTags('rst')

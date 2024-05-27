@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AccountsService } from 'src/accounts/accounts.service';
 import { rfidTokenConstants } from 'src/constants/constants';
-import { ConsumeTokenDto } from './dto/consume-token.dto';
+import { ConsumeTokenRfidDto } from './dto/consume-token.dto';
 import { RFIDToken } from './scheme/RFIDToken.scheme';
 import { ValidateTokenDto } from './dto/validate-token';
 import { validate } from 'class-validator';
@@ -70,7 +70,7 @@ export class RfidtokenService {
     return accFromToken;
   }
 
-  async consumeToken(consumeTokenDto: ConsumeTokenDto) {
+  async consumeToken(consumeTokenDto: ConsumeTokenRfidDto) {
 
     const token = await this.validateToken({Token: consumeTokenDto.Token});
 
